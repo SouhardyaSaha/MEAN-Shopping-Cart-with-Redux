@@ -1,0 +1,13 @@
+.login-card {
+  max-width: 400px;
+  max-height: 400px;
+}
+
+.left-image {
+  background-image: url("../../assets/img/bg-01.png"); /* The image used */
+  background-color: #9e9d9d; /* Used if the image is unavailable */
+  height: 100vh; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
