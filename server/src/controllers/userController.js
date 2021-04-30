@@ -6,6 +6,7 @@ const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const CartModel = require('../models/CartModel');
 
 // Function to get all users
 const getUser = catchAsync(async (req, res, next) => {
@@ -21,6 +22,8 @@ const signUp = catchAsync(async (req, res, next) => {
   const { name, email, password } = req.body;
   const newUser = new UserModel({ name, email, password });
   const user = await newUser.save();
+
+  await CartModel.create({ user: user.id })
 
   sendToken(user, 201, res);
 });

@@ -36,7 +36,11 @@ app.use(expressMongoSanitize());
 // Prevent XSS attacks
 app.use(xssClean());
 
-app.use(cors())
+// Adding Cors
+app.use(cors({
+  origin: 'http://localhost:4200',
+  credentials: true
+}))
 
 if (process.env.NODE_ENV !== 'production') {
   app.use(morgan('dev'));

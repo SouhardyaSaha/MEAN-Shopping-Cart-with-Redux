@@ -1,5 +1,6 @@
 'use strict';
 
+const { updateCart, getCart } = require('../controllers/cartController');
 // Importing functions from the controller
 const {
   getUser,
@@ -15,8 +16,15 @@ const userRouter = require('express').Router();
 
 // Setting up the routes
 userRouter.route('/').get(protect, getUser).post(signUp);
+
+userRouter.route('/cart')
+  .get(protect, getCart)
+  .patch(protect, updateCart);
+
 userRouter.route('/login').post(login);
+
 userRouter.route('/logout').get(logout);
+
 userRouter.route('/:id').get(getSingleUser);
 
 module.exports = userRouter;
