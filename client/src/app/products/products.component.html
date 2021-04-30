@@ -1,0 +1,77 @@
+<mat-toolbar>
+  <div class="container">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>My App</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>share</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<!-- Page Content-->
+<!-- <div class="container">
+  <div class="row justify-content-center my-4">
+    <div class="col-lg-9">
+      <div class="row">
+        <div *ngFor="let product of products$ | async" class="col-lg-4 col-md-6 mb-4">
+          <div class="card h-100">
+            <a href="#!"><img class="card-img-top" src="https://via.placeholder.com/700x400" alt="..." /></a>
+            <div class="card-body">
+              <h2 class="card-title text-center">{{ product.name }}</h2>
+              <h3>TK.{{ product.price }}</h3>
+              <p class="card-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!
+              </p>
+            </div>
+            <div class="card-footer text-center">
+              <button class="btn btn-sm">Add To Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card h-100">
+            <a href="#!"><img class="card-img-top" src="https://via.placeholder.com/700x400" alt="..." /></a>
+            <div class="card-body">
+              <h4 class="card-title"><a href="#!">Item Two</a></h4>
+              <h5>$24.99</h5>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!
+                Lorem ipsum dolor sit amet.</p>
+            </div>
+            <div class="card-footer"><small class="text-muted">★ ★ ★ ★ ☆</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+
+
+<div id="wrapper">
+  <div id="shopping-list">
+    <div id="list">
+      <h2>Shopping List</h2>
+
+      <ul>
+        <div *ngFor="let product of products$ | async" (click)="onAddItem(product)">
+          {{ product.name }}
+          {{ product.price }}
+        </div>
+        <br> <br>
+        <li *ngFor="let cartItem of cartItems$ | async" (click)="onRemoveItem(cartItem)">
+          {{ cartItem.color }}
+          {{ cartItem.quantity }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

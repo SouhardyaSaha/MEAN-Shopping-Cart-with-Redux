@@ -6,14 +6,43 @@ import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+// import { ShoppingReducer } from './store/reducers/shopping.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { ProductsComponent } from './products/products.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CartComponent } from './cart/cart.component';
+import { AuthInterceptorService } from './auth/auth-intercerptor.service';
+import { CartReducer } from './store/reducers/cart.reducer';
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ProductsComponent, CartComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
+    StoreModule.forRoot({
+      cart: CartReducer,
+    }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
+    BrowserAnimationsModule,
+    MaterialModule,
+    NgbModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
