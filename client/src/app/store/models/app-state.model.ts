@@ -1,5 +1,5 @@
-import { CartItem } from 'src/app/cart/cart.model';
+import { CartState } from '../reducers/cart.reducer';
 
 export interface AppState {
-  readonly cart: CartItem[];
+  readonly cart: CartState;
 }

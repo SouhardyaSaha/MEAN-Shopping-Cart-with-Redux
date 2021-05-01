@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { CartItem, CartResponseData } from './cart.model';
 
 @Injectable({
   providedIn: 'root',
@@ -12,16 +13,26 @@ export class CartsService {
 
   public getCartItems() {
     let url = `${this.baseURL}`;
-    return this.http.get<any>(url).pipe(map((res) => res.body.cart));
+    return this.http.get<CartResponseData>(url).pipe(
+      map((res) => {
+        console.log(res);
+
+        return res.body.cart.items;
+      })
+    );
   }
 
-  public updateCartItem(cart: any) {
-    let url = `${this.baseURL}`;
-    return this.http.patch<any>(url, cart).pipe(map((res) => res.body.cart));
+  public addCartItem(cartItem: CartItem) {
+    let url = `${this.baseURL}/add`;
+    return this.http
+      .patch<CartResponseData>(url, cartItem)
+      .pipe(map((res) => res.body.cart.items));
   }
 
-  // public removeCartItem() {
-  //   let url = `${this.baseURL}/users/cart`;
-
-  // }
+  public removeCartItem(cartItem: CartItem) {
+    let url = `${this.baseURL}/remove`;
+    return this.http
+      .patch<CartResponseData>(url, cartItem)
+      .pipe(map((res) => res.body.cart.items));
+  }
 }

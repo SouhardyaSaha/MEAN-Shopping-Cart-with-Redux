@@ -1,6 +1,6 @@
 'use strict';
 
-const { updateCart, getCart } = require('../controllers/cartController');
+const { addToCart, getCart, removeFromCart, clearCart } = require('../controllers/cartController');
 // Importing functions from the controller
 const {
   getUser,
@@ -18,8 +18,16 @@ const userRouter = require('express').Router();
 userRouter.route('/').get(protect, getUser).post(signUp);
 
 userRouter.route('/cart')
-  .get(protect, getCart)
-  .patch(protect, updateCart);
+  .get(protect, getCart);
+
+userRouter.route('/cart/add')
+  .patch(protect, addToCart);
+
+userRouter.route('/cart/remove')
+  .patch(protect, removeFromCart);
+
+userRouter.route('/cart/clear')
+  .patch(protect, clearCart);
 
 userRouter.route('/login').post(login);
 

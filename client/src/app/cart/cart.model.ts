@@ -1,6 +1,6 @@
 export interface CartItem {
   product: {
-    id: string;
+    _id: string;
     name: string;
     price: number;
   };
@@ -11,4 +11,14 @@ export interface CartItem {
 
 export interface Cart {
   items: CartItem[];
+}
+
+export interface CartResponseData {
+  _id: string;
+  user: string;
+  body: {
+    cart: {
+      items: CartItem[];
+    };
+  };
 }

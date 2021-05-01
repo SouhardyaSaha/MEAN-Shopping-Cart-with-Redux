@@ -68,6 +68,7 @@
         </div>
         <br> <br>
         <li *ngFor="let cartItem of cartItems$ | async" (click)="onRemoveItem(cartItem)">
+          {{ cartItem.product.name }}
           {{ cartItem.color }}
           {{ cartItem.quantity }}
         </li>

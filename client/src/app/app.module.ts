@@ -17,6 +17,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CartComponent } from './cart/cart.component';
 import { AuthInterceptorService } from './auth/auth-intercerptor.service';
 import { CartReducer } from './store/reducers/cart.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { CartEffects } from './store/effects/cart.effects';
 
 @NgModule({
   declarations: [AppComponent, ProductsComponent, CartComponent],
@@ -28,6 +30,7 @@ import { CartReducer } from './store/reducers/cart.reducer';
     StoreModule.forRoot({
       cart: CartReducer,
     }),
+    EffectsModule.forRoot([CartEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

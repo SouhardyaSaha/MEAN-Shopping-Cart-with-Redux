@@ -1,29 +1,93 @@
 import { CartItem } from 'src/app/cart/cart.model';
 import { CartActionTypes, CartAction } from '../actions/cart.actions';
 
-const initialState: CartItem[] = [
-  {
-    product: {
-      id: '123123',
-      name: 'T-Shirt',
-      price: 500,
+export interface CartState {
+  items: CartItem[];
+  loading: boolean;
+  error: Error;
+}
+
+const initialState: CartState = {
+  items: [
+    {
+      product: {
+        _id: '123123',
+        name: 'T-Shirt',
+        price: 500,
+      },
+      color: 'white',
+      quantity: 2,
+      size: 'large',
     },
-    color: 'white',
-    quantity: 2,
-    size: 'large',
-  },
-];
+  ],
+  loading: false,
+  error: undefined,
+};
 
 export function CartReducer(
-  state: CartItem[] = initialState,
+  state: CartState = initialState,
   action: CartAction
 ) {
   switch (action.type) {
+    case CartActionTypes.LOAD_CART:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case CartActionTypes.LOAD_CART_SUCCESS:
+      return {
+        ...state,
+        items: action.payload,
+        loading: false,
+      };
+
+    case CartActionTypes.LOAD_CART_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        loading: false,
+      };
+
     case CartActionTypes.ADD_ITEM:
-      return [...state, action.payload];
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case CartActionTypes.ADD_ITEM_SUCCESS:
+      return {
+        ...state,
+        items: action.payload,
+        loading: false,
+      };
+
+    case CartActionTypes.ADD_ITEM_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        loading: false,
+      };
 
     case CartActionTypes.REMOVE_ITEM:
-      return state.filter((item) => item !== action.payload);
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case CartActionTypes.REMOVE_ITEM_SUCCESS:
+      return {
+        ...state,
+        items: action.payload,
+        loading: false,
+      };
+
+    case CartActionTypes.REMOVE_ITEM_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        loading: false,
+      };
 
     default:
       return state;
