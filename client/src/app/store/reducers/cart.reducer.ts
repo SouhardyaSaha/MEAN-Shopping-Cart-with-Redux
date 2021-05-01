@@ -8,18 +8,7 @@ export interface CartState {
 }
 
 const initialState: CartState = {
-  items: [
-    {
-      product: {
-        _id: '123123',
-        name: 'T-Shirt',
-        price: 500,
-      },
-      color: 'white',
-      quantity: 2,
-      size: 'large',
-    },
-  ],
+  items: [],
   loading: false,
   error: undefined,
 };

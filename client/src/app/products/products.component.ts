@@ -3,15 +3,12 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import {
   AddItemAction,
-  AddItemSuccessAction,
   LoadCartAction,
   RemoveItemAction,
-  RemoveItemSuccessAction,
 } from '../store/actions/cart.actions';
 import { AppState } from '../store/models/app-state.model';
 import { Product } from './product.model';
 import { ProductsService } from './products.service';
-import { CartsService } from '../cart/carts.service';
 import { CartItem } from '../cart/cart.model';
 
 @Component({
@@ -33,12 +30,11 @@ export class ProductsComponent implements OnInit {
 
   constructor(
     private productService: ProductsService,
-    private cartService: CartsService,
     private store: Store<AppState>
   ) {}
 
   ngOnInit(): void {
-    // this.productService.getProducts().subscribe((res) => console.log(res));
+    this.productService.getProducts().subscribe((res) => console.log(res));
     // this.cartService.getCartItems().subscribe((res) => console.log(res));
 
     this.products$ = this.productService.getProducts();

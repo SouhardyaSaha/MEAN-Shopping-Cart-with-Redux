@@ -19,9 +19,10 @@ import { AuthInterceptorService } from './auth/auth-intercerptor.service';
 import { CartReducer } from './store/reducers/cart.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { CartEffects } from './store/effects/cart.effects';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
-  declarations: [AppComponent, ProductsComponent, CartComponent],
+  declarations: [AppComponent, ProductsComponent, CartComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
