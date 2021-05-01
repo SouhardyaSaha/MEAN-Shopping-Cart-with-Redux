@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
         console.log(res);
         // this.error = null
         this.isLoading = false;
-        this.router.navigate(['products']);
+        // this.router.navigate(['products']);
       },
       (errorMessage) => {
         // this.error = errorMessage

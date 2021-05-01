@@ -123,10 +123,7 @@ export class AuthService {
     localStorage.setItem('userData', JSON.stringify(user));
 
     this.user.next(user);
-    // console.log();
-    console.log('from auth service', user.role);
-
-    // this.router.navigate([user.role]);
+    this.router.navigate(['products']);
   }
 
   public requestResetPassword(email) {

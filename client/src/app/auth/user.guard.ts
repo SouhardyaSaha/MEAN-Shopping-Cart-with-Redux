@@ -13,7 +13,7 @@ import { map, take } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
+export class UserGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(
@@ -28,11 +28,11 @@ export class AuthGuard implements CanActivate {
       take(1),
       map((user) => {
         const isAuth = !!user;
-        if (!isAuth) {
+        if (isAuth) {
           return true;
         }
 
-        return this.router.createUrlTree(['products']);
+        return this.router.createUrlTree(['/auth']);
       })
     );
   }

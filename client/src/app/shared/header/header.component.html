@@ -4,11 +4,14 @@
 
     <div class="right-content mr-auto">
       <a class="navbar-brand" [routerLink]="['/products']" routerLinkActive="active">Products</a>
-      <a class="navbar-brand" [routerLink]="['/cart']" routerLinkActive="active">Cart</a>
+      <a *ngIf="user" class="navbar-brand" [routerLink]="['/cart']" routerLinkActive="active">Cart</a>
     </div>
-    <div class="right-content ml-auto">
+    <div *ngIf="!user" class="right-content ml-auto">
       <a class="navbar-brand" [routerLink]="['/auth/login']" routerLinkActive="active">Login</a>
       <a class="navbar-brand" [routerLink]="['/auth/register']" routerLinkActive="active">Register</a>
+    </div>
+    <div *ngIf="user" class="right-content ml-auto">
+      <a class="navbar-brand" (click)="onLogout()" style="cursor: pointer;">Logout</a>
     </div>
   </div>
 </nav>
