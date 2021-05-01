@@ -9,7 +9,9 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { EmailComponent } from './email/email.component';
-import { MaterialModule } from '../material.module';
+import { MaterialModule } from '../shared/material/material.module';
+import { SharedModule } from '../shared/shared.module';
+// import { MaterialModule } from '../material.module';
 
 @NgModule({
   declarations: [
@@ -24,8 +26,8 @@ import { MaterialModule } from '../material.module';
     CommonModule,
     ReactiveFormsModule,
     AuthRoutingModule,
-    MaterialModule,
-    // SharedModule,
+    // MaterialModule,
+    SharedModule,
   ],
 })
 export class AuthModule {}

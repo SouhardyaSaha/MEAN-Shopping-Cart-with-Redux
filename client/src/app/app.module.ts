@@ -12,28 +12,28 @@ import { environment } from '../environments/environment';
 import { ProductsComponent } from './products/products.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CartComponent } from './cart/cart.component';
 import { AuthInterceptorService } from './auth/auth-intercerptor.service';
 import { CartReducer } from './store/reducers/cart.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { CartEffects } from './store/effects/cart.effects';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './shared/header/header.component';
 import { ProductItemComponent } from './products/product-item/product-item.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductsComponent,
     CartComponent,
-    HeaderComponent,
     ProductItemComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    SharedModule,
     FormsModule,
     StoreModule.forRoot({
       cart: CartReducer,
@@ -44,7 +44,6 @@ import { ProductItemComponent } from './products/product-item/product-item.compo
       logOnly: environment.production,
     }),
     BrowserAnimationsModule,
-    MaterialModule,
     NgbModule,
   ],
   providers: [
