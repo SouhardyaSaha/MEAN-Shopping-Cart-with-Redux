@@ -5,24 +5,11 @@
   <div class="row justify-content-center my-4">
     <div class="col-12">
       <div class="row">
+
         <div *ngFor="let product of products$ | async" class="col-lg-3 col-md-4 mb-4">
-          <div class="card h-100">
-            <a href="#!"><img class="card-img-top" src="https://via.placeholder.com/700x400" alt="..." /></a>
-            <div class="card-body">
-              <h2 class="card-title text-center">{{ product.name }}</h2>
-              <!-- <h3>TK.</h3> -->
-              <p><strong>Price:</strong>TK.{{ product.price }}</p>
-              <p><strong>Color:</strong></p>
-              <p><strong>Size:</strong></p>
-              <!-- <p class="card-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!
-              </p> -->
-            </div>
-            <div class="card-footer text-center">
-              <button class="btn btn-sm" [disabled]="true">Add To Cart</button>
-            </div>
-          </div>
+          <app-product-item [product]="product"></app-product-item>
         </div>
+
       </div>
     </div>
   </div>
@@ -33,7 +20,7 @@
 
 
 
-<!-- <div id="wrapper">
+<div id="wrapper">
   <div id="shopping-list">
     <div id="list">
       <h2>Shopping List</h2>
@@ -52,4 +39,4 @@
       </ul>
     </div>
   </div>
-</div> -->
+</div>

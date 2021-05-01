@@ -1,0 +1,32 @@
+<div class="card h-100">
+  <a href="#!"><img class="card-img-top" src="https://via.placeholder.com/700x400" alt="..." /></a>
+  <div class="card-body">
+    <h2 class="card-title text-center">{{ product.name }}</h2>
+    <p><strong>Price:</strong>TK.{{ product.price }}</p>
+    <p>
+      <strong>Color:</strong>
+      <select class="custom-select custom-select-sm w-50">
+        <option selected>Open</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </p>
+    <p>
+      <strong>Size:</strong>
+      <select class="custom-select custom-select-sm w-50">
+        <option selected>Open</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </p>
+    <p>
+      <strong>Quantity:</strong>
+      <input type="number" class="form-control-sm w-25" min="0" max="5" value="1">
+    </p>
+  </div>
+  <div class="card-footer text-center">
+    <button (click)="onAddItem(product)" class="btn btn-sm">Add To Cart</button>
+  </div>
+</div>

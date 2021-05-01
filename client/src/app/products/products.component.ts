@@ -34,16 +34,16 @@ export class ProductsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe((res) => console.log(res));
+    // this.productService.getProducts().subscribe((res) => console.log(res));
     // this.cartService.getCartItems().subscribe((res) => console.log(res));
 
     this.products$ = this.productService.getProducts();
 
-    this.cartItems$ = this.store.select((store) => store.cart.items);
-    this.loading$ = this.store.select((store) => store.cart.loading);
-    this.error$ = this.store.select((store) => store.cart.error);
+    // this.cartItems$ = this.store.select((store) => store.cart.items);
+    // this.loading$ = this.store.select((store) => store.cart.loading);
+    // this.error$ = this.store.select((store) => store.cart.error);
 
-    this.store.dispatch(new LoadCartAction());
+    // this.store.dispatch(new LoadCartAction());
   }
 
   onAddItem(product: Product) {
@@ -58,8 +58,6 @@ export class ProductsComponent implements OnInit {
       },
     };
     this.store.dispatch(new AddItemAction(cartItem));
-    // this.newCartItem.id = uuid();
-    // this.newCartItem = { id: '', name: '' };
   }
 
   onRemoveItem(cartItem: CartItem) {

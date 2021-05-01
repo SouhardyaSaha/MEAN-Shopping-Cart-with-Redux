@@ -26,7 +26,7 @@ export class CartComponent implements OnInit {
     this.loading$ = this.store.select((store) => store.cart.loading);
     this.error$ = this.store.select((store) => store.cart.error);
 
-    this.store.dispatch(new LoadCartAction());
+    // this.store.dispatch(new LoadCartAction());
   }
 
   onRemoveItem(cartItem: CartItem) {

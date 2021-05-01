@@ -20,9 +20,16 @@ import { CartReducer } from './store/reducers/cart.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { CartEffects } from './store/effects/cart.effects';
 import { HeaderComponent } from './header/header.component';
+import { ProductItemComponent } from './products/product-item/product-item.component';
 
 @NgModule({
-  declarations: [AppComponent, ProductsComponent, CartComponent, HeaderComponent],
+  declarations: [
+    AppComponent,
+    ProductsComponent,
+    CartComponent,
+    HeaderComponent,
+    ProductItemComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
