@@ -4,7 +4,10 @@
 
     <div class="right-content mr-auto">
       <a class="navbar-brand" [routerLink]="['/products']" routerLinkActive="active">Products</a>
-      <a *ngIf="user" class="navbar-brand" [routerLink]="['/cart']" routerLinkActive="active">Cart</a>
+      <a *ngIf="user" class="navbar-brand" [routerLink]="['/cart']" routerLinkActive="active">
+        Cart
+        <span class="badge badge-pill badge-dark">{{ cartItemCount }}</span>
+      </a>
     </div>
     <div *ngIf="!user" class="right-content ml-auto">
       <a class="navbar-brand" [routerLink]="['/auth/login']" routerLinkActive="active">Login</a>

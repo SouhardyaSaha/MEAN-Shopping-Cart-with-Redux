@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { Observable, Subject } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { User } from 'src/app/auth/user.model';
+import { CartsService } from 'src/app/cart/carts.service';
+import { AppState } from 'src/app/store/models/app-state.model';
 
 @Component({
   selector: 'app-header',
@@ -11,11 +14,23 @@ import { User } from 'src/app/auth/user.model';
 export class HeaderComponent implements OnInit {
   user$: Subject<User> = null;
   user: User = null;
-  constructor(private authService: AuthService) {}
+  cartItemCount: number;
+
+  constructor(
+    private authService: AuthService,
+    private cartService: CartsService,
+    private store: Store<AppState>
+  ) {}
 
   ngOnInit(): void {
     this.user$ = this.authService.user;
     this.authService.user.subscribe((user) => (this.user = user));
+
+    this.cartService.cartUpdate.subscribe(() => {
+      this.store
+        .select((store) => store.cart.items.length)
+        .subscribe((itemCount) => (this.cartItemCount = itemCount));
+    });
   }
 
   onLogout() {

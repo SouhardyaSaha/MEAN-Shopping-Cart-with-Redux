@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import {
-  AddItemAction,
-  LoadCartAction,
-  RemoveItemAction,
-} from '../store/actions/cart.actions';
+import { RemoveItemAction } from '../store/actions/cart.actions';
 import { AppState } from '../store/models/app-state.model';
 import { CartItem } from '../cart/cart.model';
 
