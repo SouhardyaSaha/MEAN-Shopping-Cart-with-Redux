@@ -13,13 +13,9 @@ export class CartsService {
 
   public getCartItems() {
     let url = `${this.baseURL}`;
-    return this.http.get<CartResponseData>(url).pipe(
-      map((res) => {
-        console.log(res);
-
-        return res.body.cart.items;
-      })
-    );
+    return this.http
+      .get<CartResponseData>(url)
+      .pipe(map((res) => res.body.cart.items));
   }
 
   public addCartItem(cartItem: CartItem) {
