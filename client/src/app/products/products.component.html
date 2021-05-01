@@ -14,29 +14,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-<div id="wrapper">
-  <div id="shopping-list">
-    <div id="list">
-      <h2>Shopping List</h2>
-
-      <ul>
-        <div *ngFor="let product of products$ | async" (click)="onAddItem(product)">
-          {{ product.name }}
-          {{ product.price }}
-        </div>
-        <br> <br>
-        <li *ngFor="let cartItem of cartItems$ | async" (click)="onRemoveItem(cartItem)">
-          {{ cartItem.product.name }}
-          {{ cartItem.color }}
-          {{ cartItem.quantity }}
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>

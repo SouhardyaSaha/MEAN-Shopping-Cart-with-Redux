@@ -1,4 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { CartItem } from 'src/app/cart/cart.model';
 import { AddItemAction } from 'src/app/store/actions/cart.actions';
@@ -13,20 +19,40 @@ import { Product } from '../product.model';
 export class ProductItemComponent implements OnInit {
   @Input() product: Product;
   constructor(private store: Store<AppState>) {}
+  selectedColor: string;
+  selectedSize: string;
+  selectedQuantity: number = 1;
+  maxQuantity: number = 1;
+  colors: string[] = [];
+  sizes: string[] = [];
 
   ngOnInit(): void {
-    console.log(this.product);
+    this.product.variants.forEach((item) => {
+      this.colors.push(item.color);
+    });
   }
 
-  onAddItem(product: Product) {
+  onColorSelect() {
+    if (this.selectedColor) {
+      this.product.variants.forEach((item) => {
+        if (item.color === this.selectedColor) {
+          this.sizes = item.size;
+          this.maxQuantity = item.quantity;
+          this.selectedQuantity = 1;
+        }
+      });
+    }
+  }
+
+  onAddItem() {
     let cartItem: CartItem = {
-      size: product.variants[0].size[0],
-      quantity: product.variants[0].quantity,
-      color: product.variants[0].color,
+      size: this.selectedSize,
+      quantity: this.selectedQuantity,
+      color: this.selectedColor,
       product: {
-        _id: product._id,
-        name: product.name,
-        price: product.price,
+        _id: this.product._id,
+        name: this.product.name,
+        price: this.product.price,
       },
     };
     this.store.dispatch(new AddItemAction(cartItem));
