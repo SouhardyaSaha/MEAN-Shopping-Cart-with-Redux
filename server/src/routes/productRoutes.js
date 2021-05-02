@@ -12,7 +12,7 @@ productRouter.route('/')
 
 productRouter.route('/:productId')
     .get(getProductById)
-    .put(updateProduct)
+    .patch(updateProduct)
     .delete(deleteProduct)
 
 module.exports = productRouter;

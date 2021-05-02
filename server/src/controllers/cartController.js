@@ -108,11 +108,26 @@ const clearCart = catchAsync(async (req, res, next) => {
     });
 });
 
+const updateCart = catchAsync(async (req, res, next) => {
+    // loading the cart
+    const cart = await CartModel.findOne({ user: req.user.id })
+    if (!cart) return next(new AppError('No Cart Found', 404));
+
+    cart.items = req.body.items
+    await cart.save()
+
+    res.status(200).json({
+        success: true,
+        body: { cart },
+    });
+});
+
 module.exports = {
     getCart,
     addToCart,
     removeFromCart,
-    clearCart
+    clearCart,
+    updateCart
 };
 
 

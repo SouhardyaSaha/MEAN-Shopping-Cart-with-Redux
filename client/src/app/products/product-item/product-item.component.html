@@ -6,7 +6,7 @@
     <p>
       <strong>Color:</strong>
       <mat-form-field class="w-50">
-        <mat-select (selectionChange)="onColorSelect()" [(ngModel)]="selectedColor">
+        <mat-select [disabled]="!product.available" (selectionChange)="onColorSelect()" [(ngModel)]="selectedColor">
           <mat-option *ngFor="let color of colors" [value]="color">
             {{color}}
           </mat-option>

@@ -1,6 +1,6 @@
 'use strict';
 
-const { addToCart, getCart, removeFromCart, clearCart } = require('../controllers/cartController');
+const { addToCart, getCart, removeFromCart, clearCart, updateCart } = require('../controllers/cartController');
 // Importing functions from the controller
 const {
   getUser,
@@ -29,9 +29,12 @@ userRouter.route('/cart/remove')
 userRouter.route('/cart/clear')
   .patch(protect, clearCart);
 
+userRouter.route('/cart/update')
+  .patch(protect, updateCart);
+
 userRouter.route('/login').post(login);
 
-userRouter.route('/logout').get(logout);
+userRouter.route('/logout').post(logout);
 
 userRouter.route('/:id').get(getSingleUser);
 
